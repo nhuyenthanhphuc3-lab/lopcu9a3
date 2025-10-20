@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #99ffff 10%, #b5ffff 40%, #e0ffff 100%);
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  position: relative;
+}
+
+/* Ảnh bay nền */
+.bg-container img {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  opacity: 0.9;
+  animation: floatX 6s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+  transition: transform 1s;
+}
+
+@keyframes floatX {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(100vw - 60px)); }
+}
+
+/* Ảnh trung tâm */
+.center-gift {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.8s ease, filter 0.8s ease;
+  z-index: 10;
+}
+
+.center-gift img {
+  width: 140px;
+  height: 140px;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.8);
+  cursor: pointer;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Lá thư */
+.letter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 290%;
+  max-width: 380px;
+  height: 70%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 25px; /* 👈 Bo mềm 4 góc */
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.6),
+    inset 0 0 20px rgba(255,255,255,0.3);
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.8s ease;
+  backdrop-filter: blur(10px);
+  z-index: 20;
+}
+
+.letter.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.letter-header {
+  text-align: center;
+  padding: 10px;
+}
+
+.letter-header img {
+  width: 190px;
+  height: 220px;
+  border-radius: 12px; /* 👈 Vuông bo nhẹ */
+  box-shadow: 0 0 20px #99ffff, 0 0 35px rgba(153,255,255,0.4);
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 15px #99ffff; }
+  100% { box-shadow: 0 0 35px #b5ffff; }
+}
+
+.letter-header h2 {
+  color: #006666;
+  font-family: 'Dancing Script', cursive;
+  margin-top: 10px;
+  font-size: 24px;
+  text-shadow: 0 0 12px #ccffff;
+}
+
+/* Nội dung lá thư */
+.letter-body {
+  padding: 15px;
+  font-size: 15px;
+  color: #003333;
+  line-height: 1.7;
+  overflow-y: auto;
+  height: calc(100% - 130px);
+}
+
+/* ✨ Animation xuất hiện từng dòng chữ ✨ */
+.letter-body p {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeLine 1s ease forwards;
+}
+
+.letter-body p:nth-child(1) { animation-delay: 0.4s; }
+.letter-body p:nth-child(2) { animation-delay: 1.2s; }
+.letter-body p:nth-child(3) { animation-delay: 2s; }
+.letter-body p:nth-child(4) { animation-delay: 2.8s; }
+.letter-body p:nth-child(5) { animation-delay: 3.6s; }
+
+@keyframes fadeLine {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ảnh rơi */
+.falling {
+  position: absolute;
+  width: 150px;
+  height: 190px;
+  border-radius: 12px;
+  opacity: 0.9;
+  animation: fallDown 4s linear forwards;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.7));
+}
+
+@keyframes fallDown {
+  0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
