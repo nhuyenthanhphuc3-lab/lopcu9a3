@@ -85,8 +85,8 @@ body {
 }
 
 .letter-header img {
-  width: 190px;
-  height: 220px;
+  width: 200px;
+  height: 180px;
   border-radius: 12px; /* 👈 Vuông bo nhẹ */
   box-shadow: 0 0 20px #99ffff, 0 0 35px rgba(153,255,255,0.4);
   animation: glow 3s ease-in-out infinite alternate;
